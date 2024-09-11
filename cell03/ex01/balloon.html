@@ -22,18 +22,18 @@
             let divBalloon = document.getElementById("balloon");
             let currentWidth = parseInt(divBalloon.getBoundingClientRect().width);
             let currentHeight = parseInt(divBalloon.getBoundingClientRect().height);
+            if(i >= 2){
+                i = 0;
+            }
+            else{
+                i++;
+            }
             divBalloon.style.backgroundColor = color[i];
             divBalloon.style.width = (currentWidth + 10) + "px";
             divBalloon.style.height = (currentHeight + 10) + "px";
             if(currentWidth > 420){
                 divBalloon.style.width = 200 + "px";
                 divBalloon.style.height = 200 + "px";
-            }
-            if(i >= 2){
-                i = 0;
-            }
-            else{
-                i++;
             }
         }
         function growDown(){
