@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding:10px;
+        }
+        .largebox{
+            display: flex;
+            gap: 10px;
+        }
+        .bigbox{
+            width: 40vw;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            gap: 5px;
+        }
+        .box{
+            display: flex;
+            border: 1px solid black;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="largebox">
+        <input type="number" id="input1">
+        <select name="" id="" onchange="changeSymbol(value)">
+            <option value="plus" >+</option>
+            <option value="minus" >-</option>
+            <option value="multiply" >*</option>
+            <option value="divide" >/</option>
+            <option value="mod" >%</option>
+        </select>
+        <input type="number" id="input2" onchange="">
+        <button onclick="changeInput()">Try me!</button>
+    </div>
+    <script>
+        let symbol = ""
+        function changeSymbol(value){
+            symbol = value;
+            console.log(value);
+        }
+        function changeInput(){
+            const i1 = document.getElementById("input1");
+            const i2 = document.getElementById("input2");
+            if (Number(i1.value) < 0 || Number(i2.value)<0){
+                alert("Error :(")
+                return
+            }
+            if(symbol === 'plus'){
+                alert(Number(i1.value)+Number(i2.value));
+            }
+            else if (symbol === 'minus'){
+                alert(Number(i1.value)-Number(i2.value));
+            }
+            else if (symbol === 'multiply'){
+                alert(Number(i1.value)*Number(i2.value));
+            }
+            else if (symbol === 'divide'){
+                if (Number(i2.value) == 0){
+                    alert("It’s over 9000!");
+                    console.log("It’s over 9000!");
+                }
+                else{
+                    alert(Number(i1.value)/Number(i2.value));
+                }
+            }
+            else if (symbol === 'mod'){
+                if (Number(i2.value) == 0){
+                    alert("It’s over 9000!");
+                }
+                else{
+                    alert(Number(i1.value)%Number(i2.value));
+                }
+                
+            }
+            
+            
+        }
+        setInterval(() => alert("Please, use me..."),30000);
+    </script>
+</body>
+</html>
