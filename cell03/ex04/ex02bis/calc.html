@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+    <script>
+      
+      $(document).ready(() => {
+        const operators = ["+", "-", "*", "/", "%"];
+
+        jQuery("<div>", {
+          class: "largebox",
+        }).appendTo("body");
+
+        jQuery("<input>", {
+          type: "number",
+          id: "input1",
+        }).appendTo(".largebox");
+
+        jQuery("<select>", {
+          id: "operator",
+        }).appendTo(".largebox");
+
+        operators.forEach(ops => {
+            jQuery('<option>', {
+                text: ops,
+                value:ops
+            }).appendTo('#operator')
+        })
+
+        jQuery("<input>", {
+          type: "number",
+          id: "input2",
+        }).appendTo(".largebox");
+
+        jQuery("<button>", {
+          text: "Try me!",
+          id: "try",
+        }).appendTo(".largebox");
+
+        $("body").css({
+          margin: "0",
+          padding: "10px",
+        });
+
+        $(".largebox").css({
+          display: "flex",
+          gap: "10px",
+        });
+
+        $("#try").click(() => {
+          const i1 = Number($("#input1").val());
+          const i2 = Number($("#input2").val());
+          const op = $("#operator").val();
+          if (i1 < 0 || i2 < 0) {
+            alert("Error :(");
+            return;
+          }
+          if (op === "+") {
+            alert(i1 + i2);
+          } else if (op === "-") {
+            alert(i1 - i2);
+          } else if (op === "*") {
+            alert(i1 * i2);
+          } else if (op === "/") {
+            if (i2 == 0) {
+              alert("It’s over 9000!");
+              console.log("It’s over 9000!");
+            } else {
+              alert(i1 / i2);
+            }
+          } else if (op === "%") {
+            if (i2 == 0) {
+              alert("It’s over 9000!");
+            } else {
+              alert(i1 % i2);
+            }
+          }
+        });
+      });
+      setInterval(() => alert("Please, use me..."), 30000);
+    </script>
+</html>

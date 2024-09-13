@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<script>
+    let i = 1;
+    const color = ["red","green","blue"];
+    $(document).ready(() =>{
+        jQuery('<div>',{
+            id:'balloon',
+        }).appendTo('body')
+
+        $('#balloon').css({
+            'width': '200px',
+            'height': '200px',
+            'border-radius': '100%',
+            'background-color': 'red'
+        })
+
+        $('#balloon').click(() => {
+            let divBalloon = $("#balloon");
+            let currentWidth = parseInt(divBalloon.width());
+            let currentHeight = parseInt(divBalloon.height());
+            if(i >= 2){
+                i = 0;
+            }
+            else{
+                i++;
+            }
+            $('#balloon').css({
+                'width':`${currentWidth+10}px`,
+                'height':`${currentHeight+10}px`,
+                'backgroundColor':color[i],
+            })
+            if(currentWidth > 420){
+                $('#balloon').css({
+                'width':'200px',
+                'height':'200px',
+                })
+            }
+        });
+        $('#balloon').mouseleave(() => {
+            let divBalloon = $("#balloon");
+            let currentWidth = parseInt(divBalloon.width());
+            let currentHeight = parseInt(divBalloon.height());
+            if (i>0){
+                i--;
+            }
+            else if (i === 0){
+                i = 2;
+            }
+            $('#balloon').css({
+                'background-color': color[i]
+             })
+            if(currentWidth > 200){
+                $('#balloon').css({
+                    'width': `${currentWidth-5}px`,
+                    'height': `${currentHeight-5}px`,
+                })
+            }
+            })
+    })
+</script>
+
+</html>
