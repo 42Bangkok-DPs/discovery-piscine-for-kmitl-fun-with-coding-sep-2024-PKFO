@@ -7,7 +7,6 @@
     <title>Document</title>
   </head>
     <script>
-      
       $(document).ready(() => {
         const operators = ["+", "-", "*", "/", "%"];
 
@@ -52,6 +51,10 @@
         });
 
         $("#try").click(() => {
+          if(typeof($("#input1").val()) === "string"){
+            alert("Error :(")
+            return;
+          }
           const i1 = Number($("#input1").val());
           const i2 = Number($("#input2").val());
           const op = $("#operator").val();
